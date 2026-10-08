@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Student Expense Tracker</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div>
+        <strong>₹ Student Expense Tracker</strong>
+    </div>
+    <div class="nav-right">
+        <span id="welcomeName"></span>
+        <button id="logoutBtn" class="outline-btn">Logout</button>
+    </div>
+</nav>
+
+<main class="dashboard">
+    <div class="page-heading">
+        <div>
+            <h1>Expense Dashboard</h1>
+            <p class="muted">Manage your daily and monthly spending.</p>
+        </div>
+    </div>
+
+    <section class="stats">
+        <div class="stat-card">
+            <span>Total Spending</span>
+            <strong id="totalAmount">₹0.00</strong>
+        </div>
+        <div class="stat-card">
+            <span>This Month</span>
+            <strong id="monthlyAmount">₹0.00</strong>
+        </div>
+        <div class="stat-card">
+            <span>Total Expenses</span>
+            <strong id="expenseCount">0</strong>
+        </div>
+    </section>
+
+    <section class="content-grid">
+        <div class="card">
+            <h2>Add Expense</h2>
+            <form id="expenseForm">
+                <label>Expense Title</label>
+                <input id="title" type="text" placeholder="Example: Lunch" required>
+
+                <div class="two-col">
+                    <div>
+                        <label>Amount (₹)</label>
+                        <input id="amount" type="number" min="0.01" step="0.01" placeholder="150" required>
+                    </div>
+                    <div>
+                        <label>Category</label>
+                        <select id="category" required>
+                            <option value="">Select</option>
+                            <option>Food</option>
+                            <option>Travel</option>
+                            <option>Education</option>
+                            <option>Shopping</option>
+                            <option>Entertainment</option>
+                            <option>Bills</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label>Date</label>
+                <input id="expenseDate" type="date" required>
+
+                <label>Description</label>
+                <textarea id="description" rows="3" placeholder="Optional note"></textarea>
+
+                <button class="primary-btn" type="submit">+ Add Expense</button>
+                <p id="expenseMessage" class="message"></p>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Category Summary</h2>
+            <div id="categoryList" class="category-list">
+                <p class="muted">No expenses yet.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card table-card">
+        <div class="table-header">
+            <div>
+                <h2>Expense History</h2>
+                <p class="muted">Your latest expenses appear here.</p>
+            </div>
+            <button id="refreshBtn" class="outline-btn">Refresh</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody id="expenseTable"></tbody>
+            </table>
+        </div>
+        <p id="emptyMessage" class="muted empty">No expenses found. Add your first expense above.</p>
+    </section>
+</main>
+
+<script src="/js/dashboard.js"></script>
+</body>
+</html>
